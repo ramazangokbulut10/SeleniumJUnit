@@ -1,0 +1,117 @@
+
+****Java’dan System.setProperty(“”,””) method’unu kullanarak webdriver’in turunu ve path’ini belirleyelim
+
+    --->       System.setProperty("webdriver.chrome.driver” ,”src/driver/chromedriver"); /MAC
+    --->       System.setProperty("webdriver.chrome.driver","src/driver/chromedriver.exe"); \\WINDOWS
+
+****Chrome driver oluşturun
+      WebDriver driver = new ChromeDriver();
+
+**** driver.get(); METHODLARI ****
+
+      driver.get( String Url ); ---> String olarak girilen Url’e gider
+      driver.getTitle( );       ---> Icinde olunan sayfanin basligini String
+                                     olarak getirir
+      driver.getCurrentUrl( );  ---> Icinde olunan sayfanin Url’ini
+                                     String olarak getirir
+      driver.getPageSource( );  ---> Icinde olunan sayfanin kaynak
+                                     kodlarini String olarak getirir
+      driver.getWindowHandle( ); --->Icinde olunan sayfa ve tab'in handle degerini getirir
+      driver.getWindowHandles( ); ---> Icinde olunan sayfalarin ve tablar'in handle degerini getirir
+
+
+**** driver.navigate(); METHODLARI ****
+
+     driver.navigate( ).to( String Url ); ---> String olarak girilen Url’e gider
+     driver.navigate( ).back ( ); ---> Icinde olunan sayfadan, geldigi onceki sayfaya dondurur
+     driver.navigate( ).forward ( ); ---> Back ile donulen bir sayfadan tekrar ileri gider
+     driver.navigate( ).refresh ( ); ---> Icinde olunan sayfayi yeniler.
+
+**** driver.manage().window(); METHODLARI ****
+
+     driver.manage( ).window( ).maximize( ); ---> Browser’i maximize yapar
+     driver.manage( ).window( ).minimize( ); ---> Browser’i minimize yapar
+     driver.manage( ).window( ).fullscreen( ); ---> Browser’i full screen yapar
+     driver.manage( ).window( ).getPosition( ); ---> Browser’in koordinatlarini verir
+     driver.manage( ).window( ).getSize( ); ---> Browser’in olculerini verir
+
+**** driver.manage() METHODLARI ****
+
+driver.manage( ).window( ).setPosition(new Point ( x:80 , y:0 ) ); --->Browser’i istenen koordinata tasir
+driver.manage( ).window( ).setSize(new Dimension( 800 , 600 )); ---> Browser’i istenen olculere getirir.
+driver.manage( ).timeouts( ).implicitlyWait(Duration.ofSeconds(10)); ---> Istenen sayfa acilincaya kadar
+                                                                          maximum bekleme suresini belirtir
+driver.close( ); ---> sadece calisilan browser'i kapatir
+driver.quit( ); ---> acik olan tum browser'lari kapatir
+
+**** WEBELEMENT ****
+     **** Web sayfasında kullanilan etkilesimli olan veya olmayan herseye webelement denir
+
+     Farklı türde WebElement tag’ları(etiketleri)vardır.
+                                    --->   <html>,<body>,<form>,<label>,<input>,<a> vb.
+
+     Otomasyon için unique(tek) web öğelerini(element) tanımlamak üzere HTML kodunu
+     inceleyeceğiz(inspect).
+
+**** LOCATORS (YER BULUCU) ****
+     Bir web elementini tanimlamak için 8 tane selenium locator vardır.
+     1. id
+     2. name
+     3. className
+     4. tagName
+     5. linkText
+     6. partialLinkText
+     7. xpath => xpath yazmanın birden fazla yolu vardır
+     8. cssSelector => css yazmanın birden fazla yolu vardır
+
+
+          **** LOCATORS BULMAK ICIN KULLANILAN METHODLAR ****
+
+ ---> 1 ) Tanimladigimiz web elementin yerini driver’in bulabilmesi icin findElement (Locator)
+          method’unu kullaniriz.
+
+                           ---> driver.findElement(Locator);
+
+ ---> 2 ) findElement (Locator) method’unun icine parameter olarak yazacagimiz Locator’in 8
+          locator’dan hangisi oldugunu belirtmek icin de By.LocatorTuru(“LocateBilgisi”); kullanilir
+
+                           ---> driver.findElement(By.id("LocateBilgisi"));
+
+ ---> 3 ) Locate ettigimiz Web Elementini kullanabilmek icin bir variable’a atama yapariz
+
+                           ---> WebElement aramaKutusu = driver.findElement(By.id("LocateBilgisi"));
+
+   --->  1 ) By.id( );
+                  yanlış id locate edilirse; NoSuchElementException hatası oluşur.
+
+   ---> 2 ) By.name( );
+
+   ---> 3 ) By.className( );
+
+                          Class attribute’u olduğunda kullanılabilir
+                          Class attribute’nun degeri bosluk iceriyorsa genelde By.classname( ) ile
+                          yapilan locator’lar saglikli calismaz
+
+   ---> 4 ) By.linkText( );
+
+                          HTML link elementleri, bir web sayfasında bağlantı etiketi(tag) kısaltması olan <a>
+                          etiketi(tag) kullanılarak temsil edilir.
+
+   ---> 5 ) By.partialLinkText( );
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

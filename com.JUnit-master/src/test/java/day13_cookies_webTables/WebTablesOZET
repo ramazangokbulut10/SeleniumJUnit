@@ -1,0 +1,32 @@
+
+1. Web Tables: HTML’de bazi webelementleri organize bir sekilde, tablo biciminde kullanmak icin tercih
+               edilebilir
+
+2. Genel HTML kodlari acisindan tablo elementleri tag’lerle belirlenmistir.
+             - <table>
+             - <header> tablonun baslik kismini belirler
+                <tr> veya <th> satirlari
+                <td> satirdaki cell numarasini verir(bunu sutun diye adlandirabiliriz ama kodlarda sutun yoktur)
+             - <tbody> tablo body’si
+                <tr> satirlari
+                <td> satirdaki cell numarasini verir(bunu sutun diye adlandirabiliriz ama kodlarda sutun yoktur)
+
+
+3- Web elementleri absolute xpath’e benzer sekilde locate edebiliriz ancak yaptigimiz tam olarak xpath
+              degildir. Biz tablodaki webelementlerin tag’larina odaklaniriz.
+
+
+4- Mesela: tablo body’sin 3.satirin 5.cell’ine ulasmak istersek //tbody//tr[3]//td[5]
+              basliktaki ilk satirdaki tum datalar //thead//tr[1]
+              tablo body’sinde 4.sutundaki tum datalar //tbody//td[4]
+
+
+5- Eger verilen satir ve sutun numarasina gore dinamik bir locate yapmak istersek
+              “//tbody//tr[“ +satir+ “]//td[“ + sutun + “]”
+
+
+                  // -- tabloda <table> tagi altinda tablonun basligini gosteren <thead> tagi bulunur
+                  // -- eger baslikta satir(row) varsa <thead> tagi altinda <tr> (satir-row) tagi vardir
+                  // -- ve basliktaki sutunlara yani hucrelere(cell) de <th> tagi ile ulasilir
+                  // -- basligin altindaki tablodaki verilere <tbody> tagi ile altindaki satirlara (row)
+                  // -- <tr> tagi ile sutunlara yani hucrelere <td> tagi ile ulasiriz
